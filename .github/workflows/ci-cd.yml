@@ -45,4 +45,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: 'cd /home/forge/bimhub4.glmartinez.com && sh server_deploy.sh'
+          script: 'cd /var/www/assethub && sh server_deploy.sh'
