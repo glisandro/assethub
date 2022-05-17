@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Son lsa mismas clases que https://github.com/protonemedia/form-components-pro/blob/main/src/form-components-pro-vue3-tailwind3-simple/src/Submit.vue 
+   para que coincidan con los del formulario que genera ese paquete
+*/
+@layer components {
+    .ah-btn-1 {
+      @apply rounded-md
+      shadow-sm
+      bg-indigo-500
+      hover:bg-indigo-700
+      text-white
+      font-bold
+      py-2
+      px-4
+      focus:outline-none;
+    }
+  }
+
+/** Clases de Nova*/
+.flex-no-shrink {    
+    flex-shrink: 0;
+}
