@@ -45,4 +45,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
-          script: 'cd /var/www/assethub && sh server_deploy.sh'
+          script: 'cd /home/gustavo/assethub && sh server_deploy.sh'
