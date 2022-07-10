@@ -11,13 +11,14 @@ class RoutesTest extends TestCase
 {
     use RefreshDatabase;
 
+    /* Por ahora no hay listado de buildings
     public function testBuildingList()
     {
         Building::factory(3)->create(['user_id' => 1]);
 
         $response = $this->get('/buildings');
         $response->assertStatus(200);
-    }
+    }*/
 
     public function testAssetsList()
     {
@@ -25,6 +26,6 @@ class RoutesTest extends TestCase
         Asset::factory(2)->create(['building_id' => 1]);
 
         $response = $this->get('/buildings/1/assets');
-        $response->assertStatus(200);
+        $response->assertStatus(302);
     }
 }
