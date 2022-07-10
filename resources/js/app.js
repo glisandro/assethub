@@ -1,4 +1,5 @@
-require('./bootstrap');
+
+import './bootstrap';
 
 import { createApp, h } from 'vue'
 import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3'
@@ -15,22 +16,7 @@ import {
   Textarea,
 } from "@protonemedia/form-components-pro-vue3-tailwind3-simple";
 
-InertiaProgress.init({
-  // The delay after which the progress bar will
-  // appear during navigation, in milliseconds.
-  delay: 250,
-
-  // The color of the progress bar.
-  color: '#29d',
-
-  // Whether to include the default NProgress styles.
-  includeCSS: true,
-
-  // Whether the NProgress spinner will be shown.
-  showSpinner: true,
-})
-
-const app = createInertiaApp({
+createInertiaApp({
   resolve: name => require(`./Pages/${name}`),
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
@@ -50,3 +36,5 @@ const app = createInertiaApp({
       .mount(el)
   },
 })
+
+InertiaProgress.init({ color: '#4B5563' });

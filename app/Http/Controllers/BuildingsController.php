@@ -67,7 +67,7 @@ class BuildingsController extends Controller
             'name' => 'required',
         ]);
         $building = new Building();
-        $building->team_id = 1; //TODO:CAMBIAR
+        $building->user_id = $request->user()->id; //TODO:CAMBIAR
         $building->name = $request->input('name');
         $building->save();
 

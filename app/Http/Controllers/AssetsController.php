@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Asset;
 use App\Models\Building;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
-use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
-use Spatie\QueryBuilder\AllowedFilter;
+use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\QueryBuilder;
+use Spatie\QueryBuilder\AllowedFilter;
+use ProtoneMedia\LaravelQueryBuilderInertiaJs\InertiaTable;
 
 class AssetsController extends Controller
 {
@@ -19,7 +20,11 @@ class AssetsController extends Controller
 
     public function index(Building $building)
     {
-        
+
+        //Verificar si el building pertenece al usuario logeado, TODO: pasar eto a otro lado por ej middleware
+        if(! Auth::user()->buildings()->find($building)->count()) {
+            return redirect('/');
+        }
 
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
@@ -30,7 +35,7 @@ class AssetsController extends Controller
         });
 
         $query = QueryBuilder::for(Asset::class);
-        $query = $query->where('building_id', $building->id);
+        $query = $query->whereBelongsTo($building);
 
         $assets = $query
             ->defaultSort('name')
@@ -51,10 +56,10 @@ class AssetsController extends Controller
                 'description' => 'Description',
             ]);*/
 
-            /*$table->addFilter('status', 'Status', [
+            $table->addFilter('status', 'Status', [
                 true => 'Enabled',
                 false => 'Disabled',
-            ]);*/
+            ]);
         });
     }
 
@@ -67,6 +72,8 @@ class AssetsController extends Controller
 
     public function update(Request $request, Building $building, Asset $asset)
     {
+        //TODO: Validar que exista el building
+
         $this->validate($request, [
             'name' => 'required',
         ]);
@@ -89,6 +96,7 @@ class AssetsController extends Controller
 
     public function store(Request $request, Building $building)
     {
+        //TODO: Validar que exista el building
         $asset = new Asset($this->validate($request, [
             'name' => 'required',
         ]));

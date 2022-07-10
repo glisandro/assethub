@@ -79,15 +79,11 @@
           <td>{{ asset.name }}</td>
           <td>{{ truncate(asset.description) }}</td>
           <td>
-            <template v-if="asset.status">Enabled</template
-            ><template v-else>Disabled</template>
+            <template v-if="asset.status">Enabled</template>
+            <template v-else>Disabled</template>
           </td>
           <td>
-            <inertia-link
-              :href="route('buildings.assets.edit', [building.id, asset.id])"
-              as="button"
-              >Edit</inertia-link
-            >
+            <InertiaLink class="ah-btn-1" as="button" :href="route('buildings.assets.edit', [building.id, asset.id])">Edit</InertiaLink>
           </td>
         </tr>
       </template>

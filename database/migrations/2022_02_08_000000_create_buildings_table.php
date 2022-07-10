@@ -15,7 +15,7 @@ class CreateBuildingsTable extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id');
+            $table->foreignId('user_id');
             $table->string('name', 120);
             $table->string('slug', 120);
             $table->timestamps();

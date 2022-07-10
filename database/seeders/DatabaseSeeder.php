@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Building::factory(3)->create(['team_id' => 1]);
-        Building::factory(3)->create(['team_id' => 2]);
+        Building::factory(3)->create(['user_id' => 1]);
+        Building::factory(3)->create(['user_id' => 2]);
 
         Asset::factory(1000)->create(['building_id' => 1]);
         Asset::factory(150)->create(['building_id' => 2]);

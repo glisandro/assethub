@@ -1,21 +1,28 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
-  purge: [
-    './resources/**/*.blade.php',
-    './resources/**/*.js',
-    './resources/**/*.vue',
-    './node_modules/@protonemedia/inertiajs-tables-laravel-query-builder/**/*.vue',
-  ],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
-  },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
-  content: [
-    './node_modules/@protonemedia/**/*.{js,vue}',
-  ]
-}
+    content: [
+        './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './resources/js/**/*.vue',
+        './node_modules/@protonemedia/**/*.{js,vue}',
+        './node_modules/@protonemedia/inertiajs-tables-laravel-query-builder/**/*.vue',
+    ],
+
+    theme: {
+        extend: {
+            fontFamily: {
+                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+            },
+        },
+    },
+
+    plugins: [require('@tailwindcss/forms')],
+
+    darkMode: 'media', // or 'media' or 'class'
+    
+    variants: {
+        extend: {},
+    },
+};
