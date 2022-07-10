@@ -27,7 +27,7 @@ class BuildingFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
-            'team_id' => 1,
+            'user_id' => 1,
         ];
     }
 }
