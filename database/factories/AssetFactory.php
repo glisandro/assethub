@@ -22,7 +22,7 @@ class AssetFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->numerify('Asset ###');
+        $name = $this->faker->numerify('Asset ####');
 
         return [
             'building_id' => 1,

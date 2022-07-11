@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use App\Models\Asset;
 use App\Models\Building;
 use Illuminate\Database\Seeder;
@@ -15,14 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        //Usuario demo@assethub.xyz
+        User::factory(1)->create(['name' => 'demo', 'email' => 'demo@assethub.xyz']);
         Building::factory(3)->create(['user_id' => 1]);
-        Building::factory(3)->create(['user_id' => 2]);
 
-        Asset::factory(1000)->create(['building_id' => 1]);
+        Asset::factory(500)->create(['building_id' => 1]);
+        Asset::factory(500)->create(['building_id' => 1, 'status' => 0]);
         Asset::factory(150)->create(['building_id' => 2]);
-        Asset::factory(150)->create(['building_id' => 3]);
-        Asset::factory(150)->create(['building_id' => 4]);
-        Asset::factory(150)->create(['building_id' => 5]);
-        Asset::factory(150)->create(['building_id' => 6]);
     }
 }

@@ -972,9 +972,6 @@ select {
 .max-w-7xl {
   max-width: 80rem;
 }
-.max-w-xs {
-  max-width: 20rem;
-}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1630,9 +1627,6 @@ select {
 }
 .duration-75 {
   transition-duration: 75ms;
-}
-.duration-100 {
-  transition-duration: 100ms;
 }
 .duration-300 {
   transition-duration: 300ms;

@@ -22,7 +22,7 @@ class BuildingFactory extends Factory
      */
     public function definition()
     {
-        $name = $this->faker->numerify('Building #');
+        $name = $this->faker->lexify('Building ?');
 
         return [
             'name' => $name,
