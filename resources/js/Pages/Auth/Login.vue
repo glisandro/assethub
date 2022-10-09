@@ -7,6 +7,7 @@ import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import AppLayout from '@/Shared/AppLayout.vue';
+import AppLayoutGuest from '@/Shared/AppLayoutGuest.vue';
 
 defineProps({
     canResetPassword: Boolean,
@@ -27,7 +28,7 @@ const submit = () => {
 </script>
 
 <template>
-    <BreezeGuestLayout>
+    <AppLayoutGuest>
         <Head title="Log in" />
 
         <BreezeValidationErrors class="mb-4" />
@@ -64,5 +65,5 @@ const submit = () => {
                 </BreezeButton>
             </div>
         </form>
-    </BreezeGuestLayout>
+    </AppLayoutGuest>
 </template>

@@ -59,6 +59,7 @@
               @input="toggleSelectAll"
             />
           </th>-->
+          <th @click.prevent="sortBy('id')">Id</th>
           <th @click.prevent="sortBy('name')">Name</th>
           <th @click.prevent="sortBy('description')">Descritpion</th>
           <th @click.prevent="sortBy('status')">Status</th>
@@ -76,6 +77,7 @@
               @change="updateSelectionStatus(asset)"
             />
           </td>-->
+          <td>{{ asset.id }}</td>
           <td>{{ asset.name }}</td>
           <td>{{ truncate(asset.description) }}</td>
           <td>

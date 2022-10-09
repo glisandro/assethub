@@ -48,18 +48,27 @@ export default {
         AppLayout
     },
 
-    props: [
-        'building',
-        'asset',
-        'action'
-    ],
+    props: {
+        
+        asset: {
+            type: Object
+        },
+        building: {
+            type: Object
+        },
+        action: {
+            type: String,
+        }
+    }
+      
+    ,
 
     setup (props) {
-        
+       
         const form = useForm({
             name: props.asset.name,
             description: props.asset.description,
-            status: props.asset.status,
+            status: (props.asset.status === undefined) ? true : props.asset.status,
         }, props)
         
         function submit() {

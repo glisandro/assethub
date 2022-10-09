@@ -1,11 +1,13 @@
 <?php
 
+use Inertia\Inertia;
+use App\Models\Building;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 use App\Http\Controllers\AssetsController;
 use App\Http\Controllers\BuildingsController;
 use App\Http\Controllers\UserIndexController;
-use App\Models\Building;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('register');
+});
+
 Route::middleware('auth')->group(function () {
 
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         //Si no tiene building crear un por defecto
         //Este se debe poder editar para cambiar el nombre
 
@@ -31,7 +37,7 @@ Route::middleware('auth')->group(function () {
                     'name' =>'Building', 'user_id' => Auth::id()
                 ])->id
             ); //TODO:Si no tiene buildings deberia redireccionar a uno por defecto o crear uno
-    });
+    })->name('dashboard');
     /*
     Route::get('/buildings', [BuildingsController::class, 'Index'])
         ->name('buildings.index');*/

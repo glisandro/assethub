@@ -38,7 +38,7 @@ class AssetsController extends Controller
         $query = $query->whereBelongsTo($building);
 
         $assets = $query
-            ->defaultSort('name')
+            ->defaultSort('id')
             ->allowedFilters(['name', 'description', 'status', $globalSearch]) // Los campos puestos en estos filtros deben estar en $table->addSearchRows
             ->paginate(10)
             ->withQueryString();
