@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.8",
         "laravel/tinker": "^2.7",
         "protonemedia/inertiajs-tables-laravel-query-builder": "^1.4",
+        "sentry/sentry-laravel": "^2.14",
         "spatie/laravel-query-builder": "^5.0",
         "tightenco/ziggy": "^1.0"
     },
