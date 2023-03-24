@@ -20,7 +20,6 @@ class AssetsController extends Controller
 
     public function index(Building $building)
     {
-
         //Verificar si el building pertenece al usuario logeado, TODO: pasar eto a otro lado por ej middleware
         if(! Auth::user()->buildings()->find($building)->count()) {
             return redirect('/');
@@ -75,7 +74,7 @@ class AssetsController extends Controller
         //TODO: Validar que exista el building
 
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|min:1',
         ]);
         $asset->name = $request->input('name');
         $asset->description = $request->input('description');
@@ -87,7 +86,7 @@ class AssetsController extends Controller
 
     public function create(Building $building)
     {
-        //TODO: Colicar un limite en la cantidad de assets para evitar Ej 1000000 para todos y 1000 para cuenats free
+        //TODO: Coloicar un limite en la cantidad de assets para evitar Ej 1000000 para todos y 1000 para cuenats free
         $asset = new Asset();
         $action = __FUNCTION__;
 
@@ -98,7 +97,7 @@ class AssetsController extends Controller
     {
         //TODO: Validar que exista el building
         $asset = new Asset($this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|min:1',
         ]));
         $asset->building_id = $building->id;
         $asset->description = $request->input('description'); // TODO: limpiar/codificar HTML?
