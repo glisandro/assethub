@@ -105,7 +105,7 @@ const showingNavigationDropdown = ref(false);
                   </a>
                 </li>
                 <li>
-                  <InertiaLink class="ah-btn-1" as="button" :href="route('buildings.create')">Create Building</InertiaLink>
+                  <InertiaLink class="ah-btn-1" as="button" :href="route('buildings.index')">Settings</InertiaLink>
                 </li>
               </ul>
             </div>
