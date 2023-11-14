@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Building;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\QueryBuilder;
 use Spatie\QueryBuilder\AllowedFilter;
 
@@ -12,7 +13,6 @@ class BuildingsController extends Controller
 {
     public function index()
     {
-        
         $globalSearch = AllowedFilter::callback('global', function ($query, $value) {
             $query->where(function ($query) use ($value) {
                 $query->where('name', 'LIKE', "%{$value}%");
@@ -20,6 +20,7 @@ class BuildingsController extends Controller
         });
 
         $query = QueryBuilder::for(Building::class);
+        $query = $query->authUser();
 
         $buildings = $query
             //->allowedFields(['id', 'name'])
@@ -39,7 +40,7 @@ class BuildingsController extends Controller
     {
         $action = __FUNCTION__;
 
-        return Inertia::render('Buildings/Edit', compact('building', 'action'));
+        return Inertia::render('Buildings/EditOrNew', compact('building', 'action'));
     }
 
     public function update(Request $request, Building $building)
@@ -50,7 +51,7 @@ class BuildingsController extends Controller
         $building->name = $request->input('name');
         $building->save();
 
-        return redirect()->route('building.index')->with('Saved'); //TODO:Redireccionar conservando el querystring
+        return redirect()->route('buildings.index')->with('Saved'); //TODO:Redireccionar conservando el querystring
     }
 
     public function create(Building $building)
