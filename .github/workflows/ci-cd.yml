@@ -42,7 +42,7 @@ jobs:
          uses: appleboy/ssh-action@master
          with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME2 }}
-          key: ${{ secrets.KEY2 }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
           port: ${{ secrets.PORT }}
           script: 'cd /home/gustavo/assethub && sh server_deploy.sh'
