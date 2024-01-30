@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 
     //Route::resource('buildings', BuildingsController::class);
 
-    Route::get('/buildings/create', [BuildingsController::class, 'index'])->name('buildings.index');
+    Route::get('/buildings/index', [BuildingsController::class, 'index'])->name('buildings.index');
     Route::get('/buildings/create', [BuildingsController::class, 'create'])->name('buildings.create');
     Route::post('/buildings/store', [BuildingsController::class, 'store'])->name('buildings.store');
     Route::get('/buildings/{building}/assets', [AssetsController::class, 'index'])->name('buildings.assets.index');
