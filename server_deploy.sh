@@ -27,7 +27,7 @@ echo "Deploying application ..."
     php artisan optimize
 
     # Reload PHP to update opcache
-    echo "" | sudo -S service php8.0-fpm reload 
+    #echo "" | sudo -S service php8.0-fpm reload #no uso opcache y esta linea genera error porque usa sudo
     
     npm install
     
