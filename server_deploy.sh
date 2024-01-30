@@ -31,7 +31,7 @@ echo "Deploying application ..."
     
     npm install
     
-    # comento porque da error #npm run dev #TODO: Esta temporalmente con dev porque con prod desaparecen los estilos indigos de los botones
+    npm run dev #TODO: Esta temporalmente con dev porque con prod desaparecen los estilos indigos de los botones
 # Exit maintenance mode
 php artisan up
 
